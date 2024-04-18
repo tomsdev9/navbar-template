@@ -1,0 +1,50 @@
+.link-hover-effect {
+    position: relative;
+    padding-left: 30px; /* Assure un espace pour la flèche */
+    transition: transform 0.8s ease; /* Ajout d'une transition au texte du lien */
+}
+
+.link-hover-effect::after {
+    content: '☚';  /* Flèche pointant vers la gauche */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    left: 1; /* Position initiale de la flèche à gauche du padding */
+    transform: translateX(10px); /* Commence légèrement à gauche pour 'pousser' le texte */
+    margin-left: 20px;
+}
+
+.link-hover-effect:hover::after, .link-hover-effect:focus::after {
+    opacity: 1;
+    transform: translateX(-10px); /* Déplace la flèche juste à côté du texte */
+}
+
+.link-hover-effect:hover, .link-hover-effect:focus {
+    transform: translateX(-50px); /* Déplace le texte du lien vers la droite lors du survol ou focus */
+    transition: transform 0.5s
+}
+
+.link-hover-effect:hover::after, .link-hover-effect:focus::after {
+    opacity: 1;
+    transform: translateX(-10px); /* Déplace la flèche vers la droite pour qu'elle soit alignée avec le texte */
+}
+
+.link {
+    padding: 20px;
+    display: block;
+    color: black;
+    font-size: 80px; /* Taille par défaut pour les écrans plus grands */
+    transition: color 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* Media query pour les écrans de taille mobile */
+@media (max-width: 768px) {
+    .link  {
+        font-size: 40px; /* Taille réduite pour les écrans mobiles */
+    }
+}
